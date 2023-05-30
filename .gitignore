@@ -1,0 +1,7 @@
+.vscode
+result
+test_*
+vitis_hls.log
+*.o
+*.d
+src/_single_file.cpp
