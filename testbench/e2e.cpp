@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
 {
     cout << "Loading inputs... " << flush;
     {
-        string filename = "/path/to/MTL/vars/image.float32.bin";
+        string filename = "weights/image.float32.bin";
         ifstream ifs(filename, std::ios::binary);
         read(ifs, images[0]);
         if (!ifs)
@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
         }
     }
     {
-        string filename = "/path/to/MTL/vars/patch_embed_weight.float32.bin";
+        string filename = "weights/patch_embed_weight.float32.bin";
         ifstream ifs(filename, std::ios::binary);
         read(ifs, patch_embed_weights_in);
         if (!ifs)
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
         }
     }
     {
-        string filename = "/path/to/MTL/vars/patch_embed_bias.float32.bin";
+        string filename = "weights/patch_embed_bias.float32.bin";
         ifstream ifs(filename, std::ios::binary);
         read(ifs, patch_embed_bias_in);
         if (!ifs)
@@ -87,7 +87,7 @@ int main(int argc, char* argv[])
         }
     }
     {
-        string filename = "/path/to/MTL/vars/pos_embed.float32.bin";
+        string filename = "weights/pos_embed.float32.bin";
         ifstream ifs(filename, std::ios::binary);
         read(ifs, pos_embed);
         if (!ifs)
@@ -99,7 +99,7 @@ int main(int argc, char* argv[])
     FOR_EACH(layer, NUM_LAYERS)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << layer << "_qkv_weight.float32.bin";
+        oss << "weights/l" << layer << "_qkv_weight.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, attn_weights[layer][ATTN_Q]);
@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
     FOR_EACH(layer, NUM_LAYERS)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << layer << "_attn_proj_weight.float32.bin";
+        oss << "weights/l" << layer << "_attn_proj_weight.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, attn_weights[layer][ATTN_PROJ]);
@@ -127,7 +127,7 @@ int main(int argc, char* argv[])
     FOR_EACH(layer, NUM_LAYERS)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << layer << "_qkv_bias.float32.bin";
+        oss << "weights/l" << layer << "_qkv_bias.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, attn_bias[layer][ATTN_Q]);
@@ -142,7 +142,7 @@ int main(int argc, char* argv[])
     FOR_EACH(layer, NUM_LAYERS)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << layer << "_attn_proj_bias.float32.bin";
+        oss << "weights/l" << layer << "_attn_proj_bias.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, attn_bias[layer][ATTN_PROJ]);
@@ -155,7 +155,7 @@ int main(int argc, char* argv[])
     FOR_EACH(moe_layer, NUM_LAYERS / 2)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << (moe_layer * 2 + 1) << "_w_gate_T_task0.float32.bin";
+        oss << "weights/l" << (moe_layer * 2 + 1) << "_w_gate_T_task0.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, moe_w_gate[moe_layer]);
@@ -168,7 +168,7 @@ int main(int argc, char* argv[])
     FOR_EACH(moe_layer, NUM_LAYERS / 2)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << (moe_layer * 2 + 1) << "_htoh4_weight.float32.bin";
+        oss << "weights/l" << (moe_layer * 2 + 1) << "_htoh4_weight.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, moe_weights_l1[moe_layer]);
@@ -181,7 +181,7 @@ int main(int argc, char* argv[])
     FOR_EACH(moe_layer, NUM_LAYERS / 2)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << (moe_layer * 2 + 1) << "_htoh4_bias.float32.bin";
+        oss << "weights/l" << (moe_layer * 2 + 1) << "_htoh4_bias.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, moe_bias_l1[moe_layer]);
@@ -194,7 +194,7 @@ int main(int argc, char* argv[])
     FOR_EACH(moe_layer, NUM_LAYERS / 2)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << (moe_layer * 2 + 1) << "_h4toh_weight.float32.bin";
+        oss << "weights/l" << (moe_layer * 2 + 1) << "_h4toh_weight.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, moe_weights_l2[moe_layer]);
@@ -207,7 +207,7 @@ int main(int argc, char* argv[])
     FOR_EACH(moe_layer, NUM_LAYERS / 2)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << (moe_layer * 2 + 1) << "_h4toh_bias.float32.bin";
+        oss << "weights/l" << (moe_layer * 2 + 1) << "_h4toh_bias.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, moe_bias_l2[moe_layer]);
@@ -220,7 +220,7 @@ int main(int argc, char* argv[])
     FOR_EACH(vit_layer, (NUM_LAYERS + 1) / 2)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << (vit_layer * 2) << "_fc1_weight.float32.bin";
+        oss << "weights/l" << (vit_layer * 2) << "_fc1_weight.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, vit_weights_l1[vit_layer]);
@@ -233,7 +233,7 @@ int main(int argc, char* argv[])
     FOR_EACH(vit_layer, (NUM_LAYERS + 1) / 2)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << (vit_layer * 2) << "_fc1_bias.float32.bin";
+        oss << "weights/l" << (vit_layer * 2) << "_fc1_bias.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, vit_bias_l1[vit_layer]);
@@ -246,7 +246,7 @@ int main(int argc, char* argv[])
     FOR_EACH(vit_layer, (NUM_LAYERS + 1) / 2)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << (vit_layer * 2) << "_fc2_weight.float32.bin";
+        oss << "weights/l" << (vit_layer * 2) << "_fc2_weight.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, vit_weights_l2[vit_layer]);
@@ -259,7 +259,7 @@ int main(int argc, char* argv[])
     FOR_EACH(vit_layer, (NUM_LAYERS + 1) / 2)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << (vit_layer * 2) << "_fc2_bias.float32.bin";
+        oss << "weights/l" << (vit_layer * 2) << "_fc2_bias.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, vit_bias_l2[vit_layer]);
@@ -272,7 +272,7 @@ int main(int argc, char* argv[])
     FOR_EACH(layer, NUM_LAYERS)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << layer << "_norm1_weight.float32.bin";
+        oss << "weights/l" << layer << "_norm1_weight.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, norm_weights[layer][NORM_1]);
@@ -285,7 +285,7 @@ int main(int argc, char* argv[])
     FOR_EACH(layer, NUM_LAYERS)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << layer << "_norm2_weight.float32.bin";
+        oss << "weights/l" << layer << "_norm2_weight.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, norm_weights[layer][NORM_2]);
@@ -298,7 +298,7 @@ int main(int argc, char* argv[])
     FOR_EACH(layer, NUM_LAYERS)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << layer << "_norm1_bias.float32.bin";
+        oss << "weights/l" << layer << "_norm1_bias.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, norm_bias[layer][NORM_1]);
@@ -311,7 +311,7 @@ int main(int argc, char* argv[])
     FOR_EACH(layer, NUM_LAYERS)
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/l" << layer << "_norm2_bias.float32.bin";
+        oss << "weights/l" << layer << "_norm2_bias.float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, norm_bias[layer][NORM_2]);
@@ -330,7 +330,7 @@ int main(int argc, char* argv[])
     }
     {
         ostringstream oss;
-        oss << "/path/to/MTL/vars/" << reference_var_name << ".float32.bin";
+        oss << "weights/" << reference_var_name << ".float32.bin";
         string filename = oss.str();
         ifstream ifs(filename, std::ios::binary);
         read(ifs, reference_x);

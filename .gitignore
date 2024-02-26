@@ -5,3 +5,5 @@ vitis_hls.log
 *.o
 *.d
 src/_single_file.cpp
+vitis_hls_project
+vivado_project
